@@ -8,7 +8,12 @@ import React, { Component } from 'react';
 // and it extends a React component
 class SearchBar extends Component {
   render() {
-    return <input />
+    return <input onChange={this.onInputChange} />
+  }
+  // Define an event handler method
+  // to monitor changes
+  onInputChange(event) {
+    console.log(event.target.value);
   }
 }
 
