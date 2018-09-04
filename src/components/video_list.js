@@ -1,15 +1,17 @@
 import React from 'react';
+import VideoListItem from './video_list_item';
 
-// 1 - We`re using Bootstrap 4 in this project
-// 2 - We gonna use className instead
-// of class inside 'html' components
-// cause it is a javascript code and
-// class is reserved to JS Class components
-// 3 - Receiving props and using its value
 const VideoList = (props) => {
+  // With a key definition app will
+  // re-render only the updated video
+  // of list
+  const videoItems = props.videos.map((video) => {
+    return <VideoListItem key={video.etag} video={video}  />
+  });
+
   return (
     <ul className="col-md-4 list-group">
-      {props.videos.length}
+      {videoItems}
     </ul>
   );
 }
