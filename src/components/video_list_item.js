@@ -8,7 +8,7 @@ import React from 'react';
 const VideoListItem = ({ video }) => {
   const videoSnippet = video.snippet;
   const imageUrl = videoSnippet.thumbnails.default.url;
-  const heading = videoSnippet.title;
+  const title = videoSnippet.title;
 
   return (
     <li className="list-group-item">
@@ -19,7 +19,7 @@ const VideoListItem = ({ video }) => {
 
         <div className="media-body">
           <div className="media-heading">
-            {heading}
+            {title}
           </div>
         </div>
       </div>
