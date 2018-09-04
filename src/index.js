@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import * as API from './security/api'
 // Youtube search
 import YTSearch from 'youtube-api-search';
 // Components
@@ -7,16 +8,13 @@ import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
 
-// Youtube API Key
-const YOUTUBE_API_KEY = 'AIzaSyDLSKC85B8smihsmEoYEK-W7Ma2Xo6divc';
-
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = { videos: [] };
 
-    YTSearch({key: YOUTUBE_API_KEY, term: 'csgo'}, (videos) => {
+    YTSearch({key: API.YOUTUBE_API_KEY, term: 'csgo'}, (videos) => {
       this.setState({ videos });
     });
   }
