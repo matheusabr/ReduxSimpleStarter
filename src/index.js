@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import * as API from './security/api'
-// Youtube search
+// Libs
+import _ from 'lodash';
 import YTSearch from 'youtube-api-search';
+import * as API from './security/api';
 // Components
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
@@ -29,12 +30,13 @@ class App extends Component {
     });
   }
 
-  // Passing props
   render() {
+    // A debounce to call a function once after 3ms
+    const videoSearch = _.debounce((term) => {this.videoSearch(term)}, 300);
     return (
       <div>
         <SearchBar
-          onSearchTermChange={term => this.videoSearch(term)}/>
+          onSearchTermChange={videoSearch}/>
         <VideoDetail
           video={this.state.selectedVideo} />
         <VideoList
