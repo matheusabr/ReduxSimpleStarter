@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 // Components
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 // Youtube API Key
 const YOUTUBE_API_KEY = 'AIzaSyDLSKC85B8smihsmEoYEK-W7Ma2Xo6divc';
 
@@ -14,20 +15,16 @@ class App extends Component {
     this.state = { videos: [] };
 
     YTSearch({key: YOUTUBE_API_KEY, term: 'csgo'}, (videos) => {
-      // Update state with retrieved videos list
-      console.log(videos);
-      // this.setState({ videos: videos });
-      // When the key and value have the same
-      // name we can simply use a single name
-      // to set its value:
       this.setState({ videos });
     });
   }
 
+  // Passing props
   render() {
     return (
       <div>
         <SearchBar />
+        <VideoList videos={this.state.videos} />
       </div>
     );
   }
